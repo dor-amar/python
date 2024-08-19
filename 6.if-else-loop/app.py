@@ -1,6 +1,12 @@
-num = 0 
-while num < 10:
-    num = num + 1
-    if num % 2 == 0:
-        continue
-    print(num)
+total_sum = 0 #Set total sum to 0 to begin summing \
+
+"""
+fdgdfg
+gdfg
+
+gfdgd
+
+dfgfdgd
+
+gfdgdfg
+"""
