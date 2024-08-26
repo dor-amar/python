@@ -1,7 +1,15 @@
-import math 
-from mypackage import module
-from mypackage import createfile
+def add(a, b):
+    return a + b
 
-# imported mypackage with calculter functions 
+def substract(a, b): 
+    return a - b
 
-createfile.create()
+def multiply(a, b):
+    return a * b
+
+def create():
+    print("Hello")
+
+
+add(5,6)
+

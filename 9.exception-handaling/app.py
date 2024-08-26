@@ -1,13 +1,7 @@
-def check_my_age(age):
-    if age < 18:
-        raise ValueError("Age must be 18 or older")
-    print("Valid")
+name = "dor"
+age = 27
 
+greeting = "Hello " + name + "You are " + str(age) 
 
-
-try:
-    check_my_age(8)
-except ValueError as e:
-    print(f"Error: {e}")
-
-
+print(greeting)
+print(f"Hello, {name}, You are {age} years old !")
