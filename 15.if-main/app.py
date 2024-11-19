@@ -1,10 +1,5 @@
-def hello():
-    print("Connecting to a db")
-    print("Initilize application data")
-
-def disconnect():
-    print("Disconnected from db")
+# myfile.py
+print("This always runs")
 
 if __name__ == "__main__":
-    hello()
-    disconnect()
+    print("This runs only when the file is run directly")

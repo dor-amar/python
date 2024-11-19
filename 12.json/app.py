@@ -1,16 +1,20 @@
-import requests
+import json 
 
-url = 'https://api.github.com/repos/microsoft/vscode/issues'
+# # HTTP Request to API 
+# json_data = '{"name": "Dor", "age": 28, "skills": ["Python", "DevOps", "Kubernetes"]}'
 
-response = requests.get(url)
+# parsed_data = json.loads(json_data)
+# print(type(parsed_data))
 
-if response.status_code == 200:
-    issues = response.json()
-    print("Success!")
-    for issue in issues:
-        if issue['title'] == "MY VS CODE EDITOR IS NOT WORKING":
-            break
-        print(issue['title'])
-else:
-    print("Failed to retrieve data")
+# print(parsed_data["name"])
+# print(parsed_data["skills"])
 
+python_dictionary = {
+    "name" : "Dor",
+    "age": 27,
+    "is_student": True
+}
+
+json_data = json.dumps(python_dictionary)
+print(type(json_data))
+print(json_data)
