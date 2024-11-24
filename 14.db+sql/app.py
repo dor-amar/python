@@ -1,46 +1,59 @@
 import sqlite3
 
-conn = sqlite3.connect('todo.db')
-cursor = conn.cursor()
+connection = sqlite3.connect("november.db") # Create if no exits
 
-cursor.execute('''
-CREATE TABLE IF NOT EXISTS tasks(
-               id INTEGER PRIMARY KEY AUTOINCREMENT,
-               task TEXT,
-               status TEXT
-               )
-               ''')
+cursor = connection.cursor()
 
-cursor.execute('''
-INSERT INTO tasks (task, status)
-               VALUES ('Clean','Completed')
-               ''')
+cursor.execute("""
+CREATE TABLE IF NOT EXISTS Users (
+    id INTEGER PRIMARY KEY, 
+    name TEXT,
+    age INTEGER,
+    email TEXT 
+)
+"""
+)
+connection.commit()
 
-conn.commit()
+cursor.execute("""
+INSERT INTO Users (id, name, age, email)
+VALUES (1, 'Dor', 27, 'dor@gmail.com')
+""")
+connection.commit()
 
-cursor.execute('SELECT * FROM tasks')
-tasks = cursor.fetchall()
+# Fetch Data 
+cursor.execute("SELECT * FROM Users")
+rows = cursor.fetchall()
+for row in rows:
+    print(row)
 
-print("To Do List: ")
-for task in tasks:
-    print(task)
+# Fetch Specific Data 
+# cursor.execute("SELECT name FROM Users WHERE age > 20")
+# rows = cursor.fetchall()
+# for row in rows:
+#     print(row)
 
-cursor.execute('''
-UPDATE tasks
-SET status = 'Completed'
-WHERE task = 'Buy milk'  
-               ''')
+cursor.execute("""
+UPDATE Users
+SET age = 28
+WHERE name = 'Dor'
+""")
+connection.commit()
 
-cursor.execute('''
-DELETE FROM tasks WHERE status = 'Completed'
-               ''')
+# Fetch Data 
+cursor.execute("SELECT * FROM Users")
+rows = cursor.fetchall()
+for row in rows:
+    print(row)
 
-conn.commit()
+# Delete 
+cursor.execute("""
+DELETE FROM Users
+WHERE name = 'Dor'
+""")
+connection.commit()
 
-cursor.execute('SELECT * FROM tasks')
-tasks = cursor.fetchall()
-print("Remaning Tasks: ")
-for task in tasks:
-    print(task)
-
-conn.close()
+cursor.execute("SELECT * FROM Users")
+rows = cursor.fetchall()
+for row in rows:
+    print(row)

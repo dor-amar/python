@@ -58,16 +58,45 @@ import requests
 
 #Sahar 
 
-url = "https://jsonplaceholder.typicode.com/posts"
-data = {
-    "title": "My New Post",
-    "body": "This is the content of my new post.",
-    "userId": 1000
-}
-response = requests.post(url, json=data)
+# url = "https://jsonplaceholder.typicode.com/posts"
+# data = {
+#     "title": "My New Post",
+#     "body": "This is the content of my new post.",
+#     "userId": 1000
+# }
+# response = requests.post(url, json=data)
 
-if response.status_code == 201:
-  new_post = response.json()
-  print(f"Post created successfully! New post ID: {new_post}")
-else:
-  print(f"Error: {response.status_code}")
+# if response.status_code == 201:
+#   new_post = response.json()
+#   print(f"Post created successfully! New post ID: {new_post}")
+# else:
+#   print(f"Error: {response.status_code}")
+
+# Exercise 2 
+
+def rating_jokes():
+    url = 'https://official-joke-api.appspot.com/jokes/random'
+    joke_rating = {}
+
+    for i in range(10):
+      response = requests.get(url)
+      joke = response.json()
+      print(joke) # Print Joke 
+
+      # Logic
+      rating = int(input("Enter joke rating"))
+      joke_rating[i+1] = rating
+
+    avrage_rating = sum(joke_rating.values()) / len(joke_rating)
+    print(avrage_rating)
+
+
+rating_jokes()
+
+
+
+
+
+
+
+   
